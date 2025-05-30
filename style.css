@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+    body {
+        font-family: Arial, sans-serif; /* Fonte similar à do PDF */
+        margin: 0 auto; /* Centraliza o conteúdo da página */
+        padding: 30px 20px; /* Espaçamento interno no corpo da página */
+        max-width: 750px; /* Largura máxima para simular uma folha A4 */
+        background-color: #fff; /* Fundo branco */
+        color: #333; /* Cor de texto padrão */
+        line-height: 1.5; /* Altura da linha para melhor legibilidade */
+    }
+
+    /* Remove bordas e paddings padrão das seções principais */
+    header, section, footer {
+        margin-bottom: 20px;
+        padding: 0;
+        border: none;
+    }
+
+    /* Estilo do rodapé (não visível no PDF, mas mantido) */
+    footer {
+        margin-top: 30px;
+        padding-top: 15px;
+        text-align: center;
+        font-size: 0.85em;
+        color: #666;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    /* --- CABEÇALHO --- */
+    header h1 { /* Para o nome principal, ex: "Juliana Silva" */
+        font-size: 2.6em; /* Tamanho grande para o nome */
+        color: #2c3e50; /* Um azul acinzentado escuro (ajuste conforme o PDF) */
+        margin-bottom: 2px;
+        font-weight: 600; /* Semi-negrito */
+        line-height: 1.2;
+        text-align: left; /* Alinhamento à esquerda como no PDF */
+    }
+
+
+    .contato {
+        text-align: left; /* Alinhamento à esquerda */
+    }
+
+    .contato p {
+        margin: 3px 0;
+        font-size: 0.9em; /* Tamanho do texto de contato */
+        color: #333;
+    }
+
+    .contato p strong { /* Para os rótulos como "Telefone:", "Email:" */
+        font-weight: normal; 
+        color: #333;
+    }
+
+    
+    .email-check {
+        color: #28a745; /* Verde, como no PDF */
+        font-weight: bold; /* Deixa o check mais visível */
+        margin-right: 3px;
+    }
+
+    /* --- TÍTULOS DAS SEÇÕES --- */
+    /* (OBJETIVO, FORMAÇÃO, EXPERIÊNCIAS, HABILIDADES) */
+    section h2 {
+        font-size: 1.25em;
+        color: #1f3a60; /* Um tom de azul escuro para os títulos das seções */
+        text-transform: uppercase;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        padding-bottom: 5px;
+        border-bottom: 1.5px solid #bdc3c7; /* Linha cinza clara abaixo do título */
+        font-weight: 600;
+    }
+
+    /* --- CONTEÚDO DAS SEÇÕES --- */
+    /* Parágrafos gerais dentro das seções (ex: texto do Objetivo) */
+    section > p { /* Seletor para parágrafos diretos de uma section */
+        font-size: 0.95em;
+        color: #444;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    /* Listas (usadas em Formação, Experiências, Habilidades) */
+    section ul {
+        list-style-type: none; /* Remove marcadores padrão */
+        padding-left: 0; /* Remove recuo padrão */
+        margin-top: 0;
+    }
+
+    section ul li {
+        margin-bottom: 15px; /* Espaçamento entre itens da lista (ex: cada formação) */
+        padding-left: 20px;  /* Espaço para o marcador "•" customizado */
+        position: relative;   /* Necessário para posicionar o ::before */
+    }
+
+    /* Marcador "•" para itens de FORMAÇÃO e HABILIDADES */
+    #escolaridade ul > li::before,
+    #formacao ul > li::before, /* Se você renomear a seção para "formacao" */
+    #habilidades ul > li::before {
+        content: "•"; /* Adiciona o marcador de bolinha */
+        position: absolute;
+        left: 0;
+        top: -2px; /* Ajuste fino vertical da bolinha */
+        color: #1f3a60; /* Cor da bolinha (mesma dos títulos de seção ou preta) */
+        font-weight: bold;
+        font-size: 1.3em; /* Tamanho da bolinha */
+    }
+     /* Remove o marcador duplicado se o h3 for o primeiro elemento, pois o li já tem */
+    section ul li > h3:first-child::before {
+        content: ""; /* Remove o marcador específicamente do h3 se ele já está no li */
+    }
+
+
+    /* Sub-títulos dentro dos itens de lista (Nome da Instituição, Nome da Empresa) */
+    section h3 {
+        font-size: 1.0em; /* Tamanho para "Escola Faustino", "Empresa Ícaro" */
+        color: #2c3e50; /* Azul acinzentado escuro */
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-weight: 600; /* Negrito */
+    }
+
+    /* Parágrafos dentro dos itens de lista (Curso, Período, Cargo, etc.) */
+    section ul li p {
+        font-size: 0.9em;
+        color: #555;
+        margin: 2px 0;
+        padding-left: 0; /* Garante que não haja recuo extra */
+        line-height: 1.5;
+    }
+    /* Remove o negrito dos <strong> dentro das descrições */
+    section ul li p strong {
+        font-weight: normal;
+    }
+
+
+    /* Lista aninhada (para "Principais Atividades" em Experiências) */
+    #experiencias ul ul {
+        padding-left: 5px; /* Pequeno recuo para a sub-lista */
+        margin-top: 5px;
+        margin-bottom: 0; /* Remove margem inferior da sub-lista */
+    }
+
+    #experiencias ul ul li {
+        font-size: 0.9em;
+        color: #555;
+        margin-bottom: 4px; /* Espaçamento entre atividades */
+        padding-left: 18px; /* Espaço para o marcador da sub-lista */
+    }
+
+    #experiencias ul ul li::before { /* Marcador para sub-lista de experiências */
+        content: "-"; /* Usando um traço como no exemplo, ou pode ser "•" */
+        position: absolute;
+        left: 0px;
+        top: -2px; /* Ajuste fino vertical */
+        color: #444; /* Cor do marcador da sub-lista */
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    /* Reset básico para H1, H2, H3 se houver estilos conflitantes (opcional) */
+    h1, h2, h3 {
+        /* A cor é definida mais especificamente acima, então não precisa aqui */
+    }
+
+    /* Estilo para a seção de dados pessoais */
+    
+    #dados-pessoais .dados-pessoais p {
+        margin: 5px 0;
+        font-size: 0.9em;
+        color: #333;
+    }
+    #dados-pessoais .dados-pessoais p strong{
+        font-weight: normal;
+    }
+   
